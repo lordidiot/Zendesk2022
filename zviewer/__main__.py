@@ -1,5 +1,4 @@
 import argparse
-from re import L
 from zviewer.cli import ZViewerShell
 from zviewer.api import ZendeskService
 
