@@ -1,5 +1,6 @@
 import re
 import requests
+from typing import List
 
 class ZendeskServiceError(Exception):
     pass
@@ -87,7 +88,7 @@ class ZendeskService():
     """
     Get ticket data for multiple tickets
     """
-    def get_tickets(self, ticket_ids: list[int]):
+    def get_tickets(self, ticket_ids: List[int]):
         l = ','.join([str(i) for i in ticket_ids])
         r = self._get(f'/tickets/show_many.json?ids={l}')
         if r.status_code != 200:

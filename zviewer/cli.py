@@ -1,6 +1,6 @@
 import re
 import cmd
-from typing import Optional
+from typing import Optional, Tuple, List
 from zviewer.api import ZendeskService, ZendeskServiceError
 
 class ZViewerShell(cmd.Cmd):
@@ -72,7 +72,7 @@ class ZViewerShell(cmd.Cmd):
         print("ticket id/id_range [id/id_range ... ]\ne.g.\n\tticket 1\n\tticket 4-5\n\tticket 1 6-10")
         print("")
 
-    def _id_range(self, param: str) -> Optional[tuple[int, int]]:
+    def _id_range(self, param: str) -> Optional[Tuple[int, int]]:
         if param.isdigit():
             return (int(param), int(param))
         elif re.match(r'^\d+-\d+$', param):
@@ -118,7 +118,7 @@ class ZViewerShell(cmd.Cmd):
         print(f"Subject: {self._truncate(ticket['subject'])}")
         print(f"Description:\n{self._truncate(ticket['description'])}")
     
-    def _display_tickets(self, ticket_ids: list[int]) -> None:
+    def _display_tickets(self, ticket_ids: List[int]) -> None:
         print("")
         if not ticket_ids:
             return
