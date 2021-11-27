@@ -14,13 +14,13 @@ class ZendeskService():
     def _subdomain(self, subdomain: str) -> None:
         # Full form url, e.g. 'https://zcctakemeasintern.zendesk.com/'
         if re.match(
-            r'https?:\/\/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}/?',
+            r'^https?:\/\/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}/?$',
             subdomain
         ):
             self.subdomain = subdomain.rstrip('/')
         # Just the subdomain, e.g. 'zcctakemasintern'
         elif re.match(
-            r'[-a-zA-Z0-9%_]{1,256}',
+            r'^[-a-zA-Z0-9%_]{1,256}$',
             subdomain
         ):
             self.subdomain = f'https://{subdomain}.zendesk.com'

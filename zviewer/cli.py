@@ -67,7 +67,7 @@ class ZViewerShell(cmd.Cmd):
     def _id_range(self, param: str) -> Optional[tuple[int, int]]:
         if param.isdigit():
             return (int(param), int(param))
-        elif re.match(r'\d+-\d+', param):
+        elif re.match(r'^\d+-\d+$', param):
             start, end = map(int, param.split('-'))
             if start <= end:
                 return (start, end)
