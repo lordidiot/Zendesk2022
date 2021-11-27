@@ -40,12 +40,16 @@ class ZViewerShell(cmd.Cmd):
 
         except ZendeskServiceError as e:
             print(f"ZendeskServiceError: {e}")
+    
+    def help_tickets(self):
+        print("tickets\nList all tickets in workspace.")
+        print("")
 
     def do_ticket(self, args):
         try:
             args = args.split()
             if not args:
-                print("Usage: ticket id/id_range [id/id_range] ... ")
+                print("Usage: ticket id/id_range [id/id_range ... ] ")
             id_ranges = []
             for param in args:
                 id_range = self._id_range(param)
@@ -63,6 +67,10 @@ class ZViewerShell(cmd.Cmd):
 
         except ZendeskServiceError as e:
             print(f"ZendeskServiceError: {e}")
+    
+    def help_ticket(self):
+        print("ticket id/id_range [id/id_range ... ]\ne.g.\n\tticket 1\n\tticket 4-5\n\tticket 1 6-10")
+        print("")
 
     def _id_range(self, param: str) -> Optional[tuple[int, int]]:
         if param.isdigit():
@@ -79,8 +87,17 @@ class ZViewerShell(cmd.Cmd):
     def do_exit(self, args):
         return True
 
+    def help_exit(self):
+        print("[e]xit\nExits the application.")
+        print("")
+
     def do_quit(self, args):
         return True
+
+    def help_quit(self):
+        print("[e]quit\nQuits the application.")
+        print("")
+
 
     # credit: https://stackoverflow.com/a/39520512
     def default(self, line):
