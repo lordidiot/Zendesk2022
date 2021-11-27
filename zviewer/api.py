@@ -1,5 +1,4 @@
 import re
-import zviewer
 import requests
 
 class ZendeskServiceError(Exception):

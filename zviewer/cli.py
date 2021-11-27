@@ -1,8 +1,6 @@
 import re
 import cmd
-import zviewer
 from typing import Optional
-from zviewer import api
 from zviewer.api import ZendeskService, ZendeskServiceError
 
 class ZViewerShell(cmd.Cmd):
