@@ -1,5 +1,4 @@
 import re
-import json
 import zviewer
 import requests
 
@@ -65,7 +64,7 @@ class ZendeskService():
             r = self._get(endpoint)
             if r.status_code != 200:
                 raise ZendeskServiceError('Unhandled error when trying to list tickets.')
-            data = json.loads(r.text) 
+            data = r.json()
             tickets += data['tickets']
             endpoint = data['next_page']
         return tickets
@@ -82,7 +81,7 @@ class ZendeskService():
         else:
             raise ZendeskServiceError(f'Unhandled error when trying to get ticket #{id}')
         
-        data = json.loads(r.text)
+        data = r.json()
         ticket_data = data['ticket']
         return ticket_data
 
@@ -94,7 +93,7 @@ class ZendeskService():
         r = self._get(f'/tickets/show_many.json?ids={l}')
         if r.status_code != 200:
             raise ZendeskServiceError('Unhandled error when trying to get multiple tickets')
-        data = json.loads(r.text)
+        data = r.json()
         tickets_data = data['tickets']
         return tickets_data
 
