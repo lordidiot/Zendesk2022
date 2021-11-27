@@ -111,3 +111,16 @@ Et nostrud aute fugiat voluptate tempor ad labore in elit et sunt. Enim quis nul
 
 View ticket: [https://zcctakemeasintern.zendesk.com/agent/tickets/5]
 ```
+
+### Testing
+
+From this repository's directory:
+
+```
+$ python3 -m unittest
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK
+```
