@@ -33,7 +33,11 @@ CLI application that allows viewing and listing of tickets from a **Zendesk** wo
 
 ### Requirements
 
-No package requirements at the moment.
+```bash
+pip install -r requirements.txt
+```
+
+Currently only requires `requests` package.
 
 Requires Python3.5+ (due to usage of type hints).
 
